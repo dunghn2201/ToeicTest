@@ -79,7 +79,7 @@ public class VocabularyActivity extends AppCompatActivity {
             try {
                 reader = new BufferedReader(
                         new InputStreamReader(getAssets().open(filename)));
-                // do reading, usually loop until end of file reading
+                // đọc đến khi hết file
                 String mLine;
                 StringTokenizer st;
                 al.clear();
@@ -101,13 +101,13 @@ public class VocabularyActivity extends AppCompatActivity {
                     });
                 }
             } catch (IOException e) {
-                //log the exception
+
             } finally {
                 if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        //log the exception
+
                     }
                 }
             }

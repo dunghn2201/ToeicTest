@@ -63,7 +63,7 @@ public class VocalDetailAdapter extends RecyclerView.Adapter<VocalDetailAdapter.
                 in.putExtra("answer", obj.answer);
                 in.putExtra("additional", obj.additional);
                 in.putExtra("photo", obj.photo);
-                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(in);
             }
         });
