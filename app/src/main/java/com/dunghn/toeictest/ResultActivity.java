@@ -31,12 +31,9 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        String titleresult="CONGRATULATION";
         toolbarresult = (Toolbar) findViewById(R.id.toolbarresult);
         setSupportActionBar(toolbarresult);
         toolbarresult.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-        getSupportActionBar().setTitle(titleresult + "");
-        toolbarresult.setTitle(Html.fromHtml("<font color='#ffffff'>"+titleresult+" </font>"));
 
         tvResult = (TextView) findViewById(R.id.tvResult);
         imgRes = (ImageView) findViewById(R.id.imgRes);
@@ -48,7 +45,6 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resultcommon.setScore(getTotalPoint(status));
-
                 Date today = new Date(System.currentTimeMillis());
                 SimpleDateFormat timeFormat = new SimpleDateFormat();
                 String s = timeFormat.format(today.getTime());

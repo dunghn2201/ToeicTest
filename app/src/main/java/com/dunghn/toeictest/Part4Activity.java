@@ -220,7 +220,7 @@ public class Part4Activity extends AppCompatActivity {
                         dialog.dismiss();
                         mediaPlayer.stop();
                         if (review)
-                            onBackPressed();
+                            finish();
                         else
                             sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
                     }
@@ -341,7 +341,7 @@ public class Part4Activity extends AppCompatActivity {
                 dialog.dismiss();
                 mediaPlayer.stop();
                 if (review)
-                    onBackPressed();
+                    finish();
                 else
                     sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
             }

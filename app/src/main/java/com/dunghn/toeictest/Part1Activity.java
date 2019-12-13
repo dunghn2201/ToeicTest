@@ -173,7 +173,7 @@ public class Part1Activity extends AppCompatActivity implements View.OnClickList
                         dialog.dismiss();
                         mediaPlayer.stop();
                         if (review)
-                            onBackPressed();
+                            finish();
                         else
                             sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
                     }
@@ -280,7 +280,7 @@ public class Part1Activity extends AppCompatActivity implements View.OnClickList
                 dialog.dismiss();
                 mediaPlayer.stop();
                 if (review)
-                    onBackPressed();
+                    finish();
                 else
                     sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
             }

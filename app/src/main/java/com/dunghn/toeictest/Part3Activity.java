@@ -160,7 +160,6 @@ public class Part3Activity extends AppCompatActivity {
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
-//                Toast.makeText(getApplicationContext(), "value: " + value, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -224,7 +223,7 @@ public class Part3Activity extends AppCompatActivity {
                         dialog.dismiss();
                         mediaPlayer.stop();
                         if (review)
-                            onBackPressed();
+                            finish();
                         else
                             sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
                     }
@@ -339,7 +338,7 @@ public class Part3Activity extends AppCompatActivity {
                 dialog.dismiss();
                 mediaPlayer.stop();
                 if (review)
-                    onBackPressed();
+                    finish();
                 else
                     sendToMain(status, ToeicTestQuizFragment.IN_PROGESS);
             }

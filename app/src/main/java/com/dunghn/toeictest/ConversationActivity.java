@@ -18,30 +18,32 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
 public class ConversationActivity extends AppCompatActivity {
-    ArrayList<Conversation> al;
-    ArrayList<String> aldata;
+    List<Conversation> listconversation;
+    List<String> allsentences;
     RecyclerView rv;
     String filename;
     boolean b = true;
     int count = 0;
     ConversationAdapter myad;
-    public TextToSpeech textToSpeech;
+    TextToSpeech textToSpeech;
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
-        String titleconversation="Conversation Detail";
+
+        String titleconversation = "Conversation Detail";
         toolbar = (Toolbar) (findViewById(R.id.toolbar));
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         getSupportActionBar().setTitle(titleconversation + "");
-        toolbar.setTitle(Html.fromHtml("<font color='#ffffff'>"+titleconversation+" </font>"));
+        toolbar.setTitle(Html.fromHtml("<font color='#ffffff'>" + titleconversation + " </font>"));
 
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -56,37 +58,38 @@ public class ConversationActivity extends AppCompatActivity {
 
         new Thread(new loadChat()).start();
         rv = findViewById(R.id.rcchat);
-        al = new ArrayList<>();
-        aldata = new ArrayList<>();
-        myad = new ConversationAdapter(al, this);
+        listconversation = new ArrayList<>();
+        allsentences = new ArrayList<>();
+        myad = new ConversationAdapter(listconversation, this);
         rv.setAdapter(myad);
         myad.notifyDataSetChanged();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(linearLayoutManager);
 
-        Toast.makeText(getApplicationContext(),"Turn On volume to hear the conversation",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Turn On volume to hear the conversation", Toast.LENGTH_SHORT).show();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                finish();
             }
         });
     }
+
     public void showchat(View view) {
 
-        if (!(count == aldata.size() - 1)) {
+        if (!(count == allsentences.size() - 1)) {
             if (b == true) {
-                al.add(new Conversation(aldata.get(count), "left"));
+                listconversation.add(new Conversation(allsentences.get(count), "left"));
                 b = false;
             } else {
-                al.add(new Conversation(aldata.get(count), "right"));
+                listconversation.add(new Conversation(allsentences.get(count), "right"));
                 b = true;
             }
-            sayIt(aldata.get(count));
+            sayIt(allsentences.get(count));
             count++;
 
             myad.notifyDataSetChanged();
-            rv.scrollToPosition(al.size() - 1);
+            rv.scrollToPosition(listconversation.size() - 1);
 
         } else {
             Toast.makeText(getApplicationContext(), "Conversation Ended", Toast.LENGTH_SHORT).show();
@@ -108,7 +111,6 @@ public class ConversationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         if (textToSpeech.isSpeaking()) {
             textToSpeech.stop();
         }
@@ -124,28 +126,20 @@ public class ConversationActivity extends AppCompatActivity {
             try {
                 reader = new BufferedReader(
                         new InputStreamReader(getAssets().open(filename), "UTF-8"));
-                // do reading, usually loop until end of file reading
                 String mLine;
-                StringTokenizer st;
-
-                al.clear();
-
-
+                listconversation.clear();
                 while ((mLine = reader.readLine()) != null) {
-
-
-                    aldata.add(mLine);
-
+                    allsentences.add(mLine);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                //log the exception
+
             } finally {
                 if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException e) {
-                        //log the exception
+
                     }
                 }
             }
