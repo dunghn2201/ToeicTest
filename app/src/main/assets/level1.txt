@@ -1,25 +1,25 @@
-1;word: Jolt ;(Jhatka) push or shake (someone or something) abruptly and roughly.;example: he jolts wake up after a nightmare.;na
-2;word : Flop ;fall, move, or hang in a loose and ungainly way.;example: Her hair flopped on her head due to air;https://i-cdn.phonearena.com/images/articles/270780-thumb/super-mario-flopping.jpg
-3;Monotony ;lack of variety and interest; tedious repetition and routine.;Example: We are trying to break the monotony here.;https://mappeenya.files.wordpress.com/2014/08/mg-road-monotony.jpg
-4;Evocative;bringing strong images, memories, or feelings to mind.;Example: this novel was evocative for me.;http://www.wineverygame.com/words/images/evocative.jpg
-5;Augment;make (something) greater by adding to it; increase.;example: my expenses are augmented from last year. ;na
-6;Recitation; the action of repeating something aloud from memory.;i remember the recitation of old songs;na
-7;paramount;more important than anything else; supreme.;Example: Efficiency is of paramount concern.;na
-8;pavement;footpath;i was walking on the pavement when i called you;https://www.designingbuildings.co.uk/w/images/8/8c/Pavement.jpg
-9;redundant;unnecessary ,needless;example: they are going to relocate in a redundant house;na
-10;ergo;therefore;i was hungry, ergo i stopped at eatery. ;na
-11;hitch ;problem;example: o my god, I can never code without a hitch.;na
-12;carve ;cut into slices to eat or cut (a hard material) in order to produce an object, design, or inscription.;example 1: grandmother carved the chicken for children. example 2: Names were carved on the trees.;https://img00.deviantart.net/98e7/i/2008/040/4/3/carve_tree__by_modestjess.jpg
-13;absurd;wildly unreasonable, illogical, or inappropriate.;By taking his side ever when you know he is wrong, you are being absurd.;na
-14;paradox;a seemingly absurd or contradictory statement or proposition which when investigated may prove to be well founded or true.;In movie ,paradox was created;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL8_jFKH3JwRvjC1SK1p7M4M5cVrkifeke9Lcw2g1zBcsR4kCgoQ
-15;resent;feel bitterness or indignation at (a circumstance, action, or person).;taina resented when i told about my new job.;http://tse1.mm.bing.net/th?id=OIP.lk-N_mtFfEU9LBBiGp_BpAC6Es&w=186&h=300&pid=1.1
-16;perspiration;the process of sweating.;I got itchy after the perspiration ;http://dlife.com/wp-content/uploads/2017/09/7-Causes-Excessive-Perspiration.jpg
-17;spoof;a humorous imitation of something, typically a film or a particular genre of film, in which its characteristic features are exaggerated for comic effect.;This movie was a really good spoof of politicians ;https://i.pinimg.com/originals/f9/11/45/f911453d45cd3f2e6df72f5031f3f04d.jpg
-18;doodling;scribble absent-mindedly.;i was doodling while attending that boring lecture.;https://i.ytimg.com/vi/CfJzrmS9UfY/hqdefault.jpg
-19;laxative;(chiefly of a drug or medicine) tending to stimulate or facilitate evacuation of the bowels.;His doctor prescribed him laxative drug for constipation.;https://www.dollartree.com/assets/product_images_2016/styles/xlarge/10097.jpg
-20;Trip;catch one's foot on something and stumble or fall.;Example: If stairs will be of 2 millimeter , Most people will trip;http://canacopegdl.com/images/stumble/stumble-8.jpg
-21;Proffer;hold out or put forward (something) to someone for acceptance.;Example i have never reneged a porffer of blood ever;http://etc.usf.edu/clipart/72400/72423/72423_rey_proffer_lg.gif
-22;reneged;go back on a promise, undertaking, or contract. or denial or abandoning someone;Example: he reneged on his promise;http://content.wisestep.com/wp-content/uploads/2015/10/renege-on-job-offer.jpg
-23;Toddler; A young child who is starting to walk;Example: I love watching toddlers :);http://mumsmag.com/media/cache/main_image/custom/domain_1/image_files/sitemgr_photo_5960.jpg
-24;Yearn;have an intense feeling of longing for something, typically something that one has lost or been separated from.;Example: Sam yearned to see his mom.;http://spiritualwisdommagazine.com/wp-content/uploads/2013/09/little-boy-praying.jpg
-25;Offspring;a person's child or children.;Example: Offspring of neighbors are very naughty ;http://thatslifesci.com.s3-website-us-east-1.amazonaws.com/public/UEX4OdfI1XvC93YpI5jzsg_img_3.png
+1;abide by ;to accept and act according to a law, an agreement.; The two parties agreed to abide by the judge's decision.;https://tienganhmoingay.com/static/Vocabulary/images/word_images/abide_by.jpg
+2;ability ;the fact that somebody / something able to do something.; The designer's ability was obvious from her porfolio;https://image.shutterstock.com/image-photo/ability-achievement-inspiration-improvement-concept-260nw-440864122.jpg
+3;abundant ;more than engouh.; The computer analyst was glad to have chosen a field in which jobs were abundant.;https://www.wiederholdassoc.com/images/blog/abundance.jpg
+4;accept;to say yes to an offer, invitation, etc.; The receptionist accepted the package from the courier.;https://efc.edu.vn/wp-content/uploads/2017/10/agree.jpg
+5;access;the opportunity or right to use something.; You can't gain access to the files unless you know the password. ;https://sierraws.com/wp-content/uploads/2013/11/Sierra-Workforce-Solutions-Workplance-Security-AccessControl-e1389048310112.jpg
+6;accommodate; to provide somebody with a room or place to sleep, live or sit.; The meeting room was large enough to accommodate the various needs of the groups using it;https://images.acvmagazine.com/file/BIT-Magazine-Images/image-920.jpg
+7;accomplishment;an impressive thing that is done or achieved after a lot of work.; The success of the company was based on its early accomplishments.;https://www.accelacoach.com/wp-content/uploads/2018/05/accomplishment-1080x675.jpg
+8;accounting;the process or work of keeping financial accounts.; Good accounting is needed in all businesses;https://www.mtsac.edu/ce/images/photo_header/accounting_bookkeeping.jpg
+9;accumulate;to gradually get more and more of something over a period of time; They have accumulated more than enough information;https://tienganhmoingay.com/static/Vocabulary/images/word_images/accumulate.jpg
+10;accurately;correct and true in every detail; To gauge these figures accurately, we first need to get some facts from the shipping department. ;https://img.pngio.com/how-to-estimate-time-accurately-accurately-png-600_346.png
+11;accustom to ;to become familiar with; Chefs must accustom themselves to working long hours.;https://i.ytimg.com/vi/kZZUmUEnuQA/maxresdefault.jpg
+12;achievement ;a thing that somebody has done successfully, especially using their own effort and skill.;Joseph's achievements in R&D will go down in company history.;http://www.liberaldictionary.com/wp-content/uploads/2019/01/achievement-2138.jpg
+13;acquire;to gain something by your own efforts.;The museum acquired a Van Gogh during heavy bidding.;https://giasutoeic.com/static/Vocabulary/images/word_images/acquire.jpg
+14;action;the events in a story, play, etc.;She started her acting career while still at school.;http://www.magpiedesignco.com/wp-content/uploads/2014/01/call-to-action-social-media1.jpg
+15;address;a formal speech that is made in front of an audience.;Marco's business plan addresses the needs of small business owners.;https://mobilemarketingmagazine.com/wp-content/uploads/Mobile_Location%20-%20Copy%201.jpg
+16;adhere to;to follow, to pay attention to.;The chairman never adhered to his own rules ;http://dlife.com/wp-content/uploads/2017/09/7-Causes-Excessive-Perspiration.jpg
+17;adjacent;next to or near something.;My office is adjacent to the receptionist area on the third floor ;https://i.pinimg.com/originals/f9/11/45/f911453d45cd3f2e6df72f5031f3f04d.jpg
+18;adjustment;a small change made to something in order to correct or improve it.;I've made a few adjustments to the design.;https://i.ytimg.com/vi/CfJzrmS9UfY/hqdefault.jpg
+19;admire;to respect someone for what they are or for what they have done.;I admire all the effort the museum put into organizing this wonderful exhibit.;https://www.dollartree.com/assets/product_images_2016/styles/xlarge/10097.jpg
+20;advanced;having the most modern and recently developed ideas, methods, etc.; Since the hotel installed an advanced computer system, all operations have been functioning more smoothly;http://canacopegdl.com/images/stumble/stumble-8.jpg
+21;affordable;cheap enough for most people to buy.; The company's first priority was to find an affordable phone system.;http://etc.usf.edu/clipart/72400/72423/72423_rey_proffer_lg.gif
+22;agenda;a list of items to be discussed at a meeting, the next item on the agenda is the publicity budget. or denial or abandoning someone; The agenda was sent out three weeks ago so that everyone could prepare for the meeting;http://content.wisestep.com/wp-content/uploads/2015/10/renege-on-job-offer.jpg
+23;aggressively; acting with force and determination in order to succeed; His ideas were not well received because he spoke so aggressively :);http://mumsmag.com/media/cache/main_image/custom/domain_1/image_files/sitemgr_photo_5960.jpg
+24;agreement;an arrangement, a promise or a contract made with somebody.; According to the agreement, the caterer will also supply the flowers for the event.;http://spiritualwisdommagazine.com/wp-content/uploads/2013/09/little-boy-praying.jpg
+25;allocate;to give something officially to somebody / something for a particular purpose.; The office manager did not allocate enough money to purchase software. ;http://thatslifesci.com.s3-website-us-east-1.amazonaws.com/public/UEX4OdfI1XvC93YpI5jzsg_img_3.png

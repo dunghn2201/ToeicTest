@@ -10,34 +10,30 @@
             android:icon="@drawable/ic_score_24dp"
             android:title="Score general" />
         <item
-            android:id="@+id/nav_Books"
-            android:icon="@drawable/ic_books_24dp"
-            android:title="Books" />
-        <item
             android:id="@+id/nav_Vocabulary"
-            android:icon="@drawable/ic_vocabulary_24dp"
-            android:title="Vocabulary and Idioms "/>
+            android:icon="@drawable/ic_vocabulary"
+            android:title="Vocabulary Grammar Conversation "/>
         <item android:title="Conmmunicate">
+            <item
+                android:id="@+id/nav_Introduction"
+                android:icon="@drawable/ic_introduce"
+                android:title="Introduction the test" />
             <menu>
                 <group android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/nav_Share"
-                        android:icon="@drawable/ic_share_24dp"
-                        android:title="Share" />
                     <item
                         android:id="@+id/nav_FeedBack"
                         android:icon="@drawable/ic_feedback_24dp"
                         android:title="Feedback" />
+                    <item
+                        android:id="@+id/nav_ChangePassword"
+                        android:icon="@drawable/ic_changepassword_24dp"
+                        android:title="Change password"/>
+                    <item
+                        android:id="@+id/nav_LogOut"
+                        android:icon="@drawable/ic_logout"
+                        android:title="Log out"/>
                 </group>
             </menu>
         </item>
-        <item
-            android:id="@+id/nav_ChangePassword"
-            android:icon="@drawable/ic_changepassword_24dp"
-            android:title="Change password"/>
-        <item
-            android:id="@+id/nav_LogOut"
-            android:icon="@drawable/ic_logout_24dp"
-            android:title="Log out"/>
     </group>
 </menu>

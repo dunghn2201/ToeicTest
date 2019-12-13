@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dunghn.toeictest">
-
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GrammarDetailActivity"></activity>
-        <activity android:name=".LevelDetailActivity" />
+        <activity android:name=".ResultActivity"/>
+        <activity
+            android:name=".VocalDetailActivity"
+            android:theme="@style/NoTitleDialog" />
+        <activity android:name=".ConversationActivity" />
+        <activity android:name=".GrammarDetailActivity" />
+        <activity android:name=".VocabularyActivity" />
         <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".Part1Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Part2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Part3Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Part4Activity"
+            android:screenOrientation="portrait" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreenActivity">

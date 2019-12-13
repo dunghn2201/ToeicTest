@@ -1,9 +1,81 @@
 <resources>
-    <string name="app_name">DuAn1</string>
+    <string name="app_name">TOEIC TEST</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Speaker_person_said">Say some thing...</string>
+
+    <string name="action_next">Next</string>
+    <string name="action_back">Back</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="title_vocabulary">Vocabulary</string>
+    <string name="title_grammar">Grammar</string>
+    <string name="title_conversation">Conversation</string>
+
+    <string name="lblToeicTest_fragment">Toeic Test</string>
+    <string name="lblScoreRank_fragment">Score General</string>
+    <string name="lblBooks_fragment">Books</string>
+    <string name="lblVocalGrammarConver_fragment">Vocabulary - Grammar - Conversation</string>
+    <string name="lblIntroduce_frament">Introduction</string>
+    <string name="lblChangepass">Change password</string>
+    <string name="help_common">     The TOEIC test consists of 7 parts, divided into 2 sections: Listening and reading test. We will help you practice the listening test in this application. You will be asked to demonstrate how well you understand spoken English. The entire listening last will last approximately 45 minutes. There are four parts, and directions are given for each part. You must chose your answers by touching a suitable choice.
+    </string>
+    <string name="help_p1">Directions: For each question in this part, you will hear four statements about a picture you\'ll see on your device. When you hear the statements, you must select the one statement best describes what you see in the picture. </string>
+    <string name="help_p2">Directions: You will hear a question or statement and three responses spoken in English. They will be spoken only one time and will not be printed on your screen. Select the best response to tne question or statement and mark the letter (A), (B), or (C).</string>
+    <string name="help_p3">Directions: You will hear some short talks given by a single speaker. You will be asked to answer three questions about what the speaker says in each short talk. Select the best response to each question and mark the letter (A), (B), (C). or (D).</string>
+    <string-array name="grammar_lessons">
+        <item>Unit 1 - Present tenses</item>
+        <item>Unit 2 - Past tenses</item>
+        <item>Unit 3 - Future tenses</item>
+        <item>Unit 4 - V-ing</item>
+        <item>Unit 5 - To-infinitive</item>
+        <item>Unit 6 - Bare infinitive, Gerund or infinitive</item>
+        <item>Unit 7 - Modal verbs</item>
+        <item>Unit 8 - Sentence elements</item>
+        <item>Unit 9 - Passive Voice 1</item>
+        <item>Unit 10 - Passive Voice 2</item>
+        <item>Unit 11 - Comparisons</item>
+        <item>Unit 12 - Conditionals</item>
+        <item>Unit 13 - Wishes</item>
+        <item>Unit 14 - Relative clauses</item>
+        <item>Unit 15 - Exclamatory sentences</item>
+        <item>Unit 16 - Reported Speech</item>
+        <item>Unit 17 - Types of questions</item>
+        <item>Unit 18 - Subjunctive structures</item>
+        <item>Unit 19 - Subject-verb agreement</item>
+        <item>Unit 20 - Inversion of verbs</item>
+        <item>Unit 21 - Emphasis</item>
+        <item>Unit 22 - Relationships between ideas (1)</item>
+        <item>Unit 23 - Relationships between ideas (2)</item>
+        <item>Unit 24 - Relationships between ideas (3)</item>
+
+    </string-array>
+    <string-array name="grammar_meaning">
+        <item>Các thì hiện tại</item>
+        <item>Các thì quá khứ</item>
+        <item>Các thì tương lai</item>
+        <item>Động từ dạng V-ing (Hiện tại phân từ và danh động từ)</item>
+        <item>Động từ nguyên thể có "to"</item>
+        <item>Nguyên thể khuyết; V-ing hay To V</item>
+        <item>Động từ khuyết thiếu</item>
+        <item>Các thành phần chính của câu</item>
+        <item>Câu bị động (Phần cơ bản)</item>
+        <item>Câu bị động (Phần nâng cao)</item>
+        <item>Các dạng so sánh</item>
+        <item>Câu điều kiện</item>
+        <item>Câu ước với WISH</item>
+        <item>Mệnh đề quan hệ</item>
+        <item>Câu cảm thán</item>
+        <item>Câu gián tiếp</item>
+        <item>Các loại câu hỏi</item>
+        <item>Cấu trúc giả định</item>
+        <item>Sự hòa hợp giữa chủ ngữ và động từ</item>
+        <item>Đảo ngữ của động từ</item>
+        <item>Sự nhấn mạnh</item>
+        <item>Quan hệ giữa các ý trong câu: Quan hệ bổ sung - Quan hệ thời gian</item>
+        <item>Quan hệ giữa các ý trong câu: Quan hệ nguyên nhân - hệ quả</item>
+        <item>Quan hệ giữa các ý trong câu:Quan hệ nhượng bộ - Quan hệ mục đích</item>
+    </string-array>
 </resources>

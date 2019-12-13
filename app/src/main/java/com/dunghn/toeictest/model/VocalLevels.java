@@ -1,8 +1,5 @@
 package com.dunghn.toeictest.model;
 
-/**
- * Created by Dell on 5/23/2018.
- */
 
 public class VocalLevels {
 

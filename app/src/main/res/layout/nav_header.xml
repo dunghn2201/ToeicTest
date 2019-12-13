@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:background="#8BC34A"
+    android:background="@drawable/picexam"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
@@ -19,16 +19,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:layout_marginLeft="15dp"
+        android:textSize="19sp"
+        android:layout_marginLeft="10dp"
         android:text="Ho Ngoc Dung"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:shadowColor="@color/text_shadow_purpue"
+        android:shadowDx="-5"
+        android:shadowDy="-5"
+        android:shadowRadius="5" />
 
     <TextView
         android:id="@+id/tvEmailNavHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:text="dunghnpd02792@fpt.edu.vn" />
+        android:text="dunghnpd02792@fpt.edu.vn"
+        android:textSize="19sp"
+        android:layout_marginLeft="10dp"
+        android:shadowColor="@color/text_shadow_purpue"
+        android:shadowDx="-5"
+        android:shadowDy="-5"
+        android:shadowRadius="5"/>
 
 
 </LinearLayout>

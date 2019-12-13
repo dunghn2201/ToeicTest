@@ -6,67 +6,54 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dunghn.toeictest.fragment.BooksFragment;
 import com.dunghn.toeictest.fragment.ChangePasswordFragment;
+import com.dunghn.toeictest.fragment.IntroduceFragment;
 import com.dunghn.toeictest.fragment.ScoreGeneralFragment;
 import com.dunghn.toeictest.fragment.ToeicTestQuizFragment;
 import com.dunghn.toeictest.fragment.VocalGramConverFragment;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
-    private DrawerLayout mDrawer;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private DrawerLayout drawer;
     private Toolbar toolbar;
-    //    AccessToken accessToken;
     private View navHeader;
     TextView mtvFullNameNavHead, mtvPhoneNavHead;
     String fullnamenavhead, phonenavhead;
-    private NavigationView nvDrawer;
-    private ActionBarDrawerToggle drawerToggle;
-    View headerV;
-
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-
-//        headerV = nvDrawer.getHeaderView(0);
-
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        toolbar.setTitle("TOEIC TEST");
         // Find our drawer view
-        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggle = setupDrawerToggle();
-
-        // Setup toggle to display hamburger icon with nice animation
-        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.syncState();
-
-        // Tie DrawerLayout events to the ActionBarToggle
-        mDrawer.addDrawerListener(drawerToggle);
-        // Setup drawer view
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.drawer_open, R.string.drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
         Intent in2 = getIntent();
         Bundle b = in2.getExtras();
         fullnamenavhead = b.getString("FULLNAMENAVHEAD");
         phonenavhead = b.getString("EMAILNAVHEAD");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nvView);
-//        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = (NavigationView) findViewById(R.id.nvView);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
         navHeader = navigationView.getHeaderView(0);
 
         mtvFullNameNavHead = (TextView) navHeader.findViewById(R.id.tvFullNameNavHead);
@@ -75,83 +62,47 @@ public class MainActivity extends AppCompatActivity {
         mtvFullNameNavHead.setText(fullnamenavhead);
         mtvPhoneNavHead.setText(phonenavhead);
 
-        setupDrawerContent(nvDrawer);
-
-//        accessToken = AccessToken.getCurrentAccessToken();
-//        if (accessToken == null) {
-//        } else {
-//            loadUserProfile(accessToken);
-//        }
+        Fragment fragment = new ToeicTestQuizFragment();
+        toolbar.setTitle(R.string.lblToeicTest_fragment);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.flContent, fragment);
+        ft.commit();
 
     }
 
-    private ActionBarDrawerToggle setupDrawerToggle() {
-        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
-        // and will not render the hamburger icon without it.
-        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
-    }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        drawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggles
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
-    }
-
-    public void selectDrawerItem(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
         Fragment fragment = null;
-        Class fragmentClass;
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        switch (menuItem.getItemId()) {
+
+        switch (id) {
             case R.id.nav_home:
-                fragmentClass = ToeicTestQuizFragment.class;
+                fragment = new ToeicTestQuizFragment();
                 break;
             case R.id.nav_scoregeneral:
-                fragmentClass = ScoreGeneralFragment.class;
-                break;
-            case R.id.nav_Books:
-                fragmentClass = BooksFragment.class;
+                fragment = new ScoreGeneralFragment();
                 break;
             case R.id.nav_Vocabulary:
-                fragmentClass = VocalGramConverFragment.class;
+                fragment = new VocalGramConverFragment();
+                break;
+            case R.id.nav_Introduction:
+                fragment = new IntroduceFragment();
+                break;
+            case R.id.nav_FeedBack:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                String[] recipents = {"dunghnpd02792@fpt.edu.vn"};
+                intent.setType("message/meokonz");
+                intent.putExtra(Intent.EXTRA_EMAIL, recipents);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Toeictest Reviews");
+                Intent chooser = Intent.createChooser(intent, "Send Feedback Via");
+                startActivity(chooser);
                 break;
             case R.id.nav_ChangePassword:
-                fragmentClass = ChangePasswordFragment.class;
+                fragment = new ChangePasswordFragment();
                 break;
-
             case R.id.nav_LogOut:
-                fragmentClass = ToeicTestQuizFragment.class;
-//                LoginManager.getInstance().logOut();
                 SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
                 //xoa tinh trang luu truoc do
@@ -160,24 +111,30 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
             default:
-                fragmentClass = ToeicTestQuizFragment.class;
+                fragment = new ToeicTestQuizFragment();
         }
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "-1", Toast.LENGTH_SHORT).show();
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
         }
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
-        // Highlight the selected item has been done by NavigationView
-        // Set action bar title
-        setTitle(menuItem.getTitle());
-        // Close the navigation drawer
-        mDrawer.closeDrawers();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
     }
 }

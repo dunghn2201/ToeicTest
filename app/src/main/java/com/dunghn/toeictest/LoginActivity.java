@@ -3,10 +3,12 @@ package com.dunghn.toeictest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,8 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dunghn.toeictest.DAO.NguoiDungDAO;
-import com.dunghn.toeictest.model.NguoiDung;
+import com.dunghn.toeictest.DAO.UserDAO;
+import com.dunghn.toeictest.model.User;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,10 +32,11 @@ public class LoginActivity extends AppCompatActivity {
     int s3;
     Button btnlogin;
     String strUser, strPass;
-    NguoiDungDAO db;
-    NguoiDung user;
+    UserDAO db;
+    User user;
     boolean res;
     String fullnamenavhead,emailnavhead;
+    private ProgressDialog progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,59 +87,89 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 strUser = medUsername.getText().toString().trim();
                 strPass = medPassword.getText().toString().trim();
-                db = new NguoiDungDAO(LoginActivity.this);
+                db = new UserDAO(LoginActivity.this);
 
 
-                user = new NguoiDung(strUser, strPass);
+                user = new User(strUser, strPass);
                 res = db.checkUser(user);
                 if (strUser.isEmpty() || strPass.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập vào các trường", Toast.LENGTH_SHORT).show();
                 } else if (strUser.equalsIgnoreCase("admin") && strPass.equalsIgnoreCase("admin")) {
-                    Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                    SendIdByPreferences(new User("Administrator", strPass));
+                    progressBar = new ProgressDialog(LoginActivity.this);//Create new object of progress bar type
+                    progressBar.setCancelable(false);//Progress bar cannot be cancelled by pressing any where on screen
+                    progressBar.setMessage("Please Wait...");//Title shown in the progress bar
+                    progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);//Style of the progress bar
+                    progressBar.setProgress(0);//attributes
+                    progressBar.setMax(100);//attributes
+                    progressBar.show();//show the progress bar
+                    //This handler will add a delay of 3 seconds
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Intent start to open the navigation drawer activity
+                            progressBar.cancel();//Progress bar will be cancelled (hide from screen) when this run function will execute after 3.5seconds
+                            Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
 
-                    Bundle b2 = new Bundle();
-                    b2.putString("FULLNAMENAVHEAD","Administrator");
-                    b2.putString("EMAILNAVHEAD", "");
-                    intent2.putExtras(b2);
-                    startActivity(intent2);
+                            Bundle b2 = new Bundle();
+                            b2.putString("FULLNAMENAVHEAD","Administrator");
+                            b2.putString("EMAILNAVHEAD", "");
+                            intent2.putExtras(b2);
+                            startActivity(intent2);
+                        }
+                    }, 1000);
+
                 } else if (res == true) {
-                    SendIdByPreferences(new NguoiDung(strUser, strPass));
-
-                    Intent intent2  = new Intent(LoginActivity.this, MainActivity.class);
-                    db = new NguoiDungDAO(LoginActivity.this);
+                    SendIdByPreferences(new User(strUser, strPass));
+                    db = new UserDAO(LoginActivity.this);
                     s3 = db.getIdFromUserName(strUser);
                     Cursor rs=db.getDataFromId(s3);
 
                     rs.moveToFirst();
-                    fullnamenavhead=rs.getString(rs.getColumnIndex(NguoiDungDAO.COL_FULLN));
-                    emailnavhead=rs.getString(rs.getColumnIndex(NguoiDungDAO.COL_EMAIL));
+                    fullnamenavhead=rs.getString(rs.getColumnIndex(UserDAO.COL_FULLN));
+                    emailnavhead=rs.getString(rs.getColumnIndex(UserDAO.COL_EMAIL));
 
                     if (!rs.isClosed())  {
                         rs.close();
                     }
 
-                    Toast.makeText(LoginActivity.this, ""+fullnamenavhead+" " +emailnavhead, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, ""+fullnamenavhead+" " +emailnavhead, Toast.LENGTH_SHORT).show();
+                    progressBar = new ProgressDialog(LoginActivity.this);//Create new object of progress bar type
+                    progressBar.setCancelable(false);//Progress bar cannot be cancelled by pressing any where on screen
+                    progressBar.setMessage("Please Wait...");//Title shown in the progress bar
+                    progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);//Style of the progress bar
+                    progressBar.setProgress(0);//attributes
+                    progressBar.setMax(100);//attributes
+                    progressBar.show();//show the progress bar
+                    //This handler will add a delay of 3 seconds
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Intent start to open the navigation drawer activity
+                            progressBar.cancel();//Progress bar will be cancelled (hide from screen) when this run function will execute after 3.5seconds
 
-                    Bundle b2 = new Bundle();
-                    b2.putString("FULLNAMENAVHEAD",fullnamenavhead);
-                    b2.putString("EMAILNAVHEAD", emailnavhead);
-                    intent2.putExtras(b2);
+                            Intent intent2  = new Intent(LoginActivity.this, MainActivity.class);
+                            Bundle b2 = new Bundle();
+                            b2.putString("FULLNAMENAVHEAD",fullnamenavhead);
+                            b2.putString("EMAILNAVHEAD", emailnavhead);
+                            intent2.putExtras(b2);
 
-                    startActivity(intent2);
-                    finish();
-                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(intent2);
+                            Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT).show();
+                        }
+                    }, 1000);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Tên đăng nhập và mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Username and password are incorrect", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
-    public void SendIdByPreferences(NguoiDung nd) {
+    public void SendIdByPreferences(User u) {
         SharedPreferences pref = getSharedPreferences("USER_FILE_CHANGEPASS", MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
-        edit.putString("USERNAME", nd.getUsername());
-        edit.putString("PASSWORD", nd.getPassword());
+        edit.putString("USERNAME", u.getUsername());
+        edit.putString("PASSWORD", u.getPassword());
 
         //luu lai toan bo
         edit.commit();

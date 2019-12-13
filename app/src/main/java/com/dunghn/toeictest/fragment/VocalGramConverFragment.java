@@ -2,25 +2,33 @@ package com.dunghn.toeictest.fragment;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import com.dunghn.toeictest.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class VocalGramConverFragment extends Fragment {
-    ViewPager mViewPager;
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private View rootView;
+
+    Fragment fragment1;
+    Fragment fragment2;
+    Fragment fragment3;
+    FragmentManager fm;
+    Fragment active;
+
     public VocalGramConverFragment() {
         // Required empty public constructor
     }
@@ -29,72 +37,49 @@ public class VocalGramConverFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.fragment_vocabulary_grammar_conversation, container, false);
+        rootView = inflater.inflate(R.layout.fragment_vocabulary_grammar_conversation, container, false);
 
-                mSectionsPagerAdapter = new SectionsPagerAdapter(getActivity().getSupportFragmentManager());
-        mViewPager = (ViewPager) rootView.findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-        TabLayout tabs = (TabLayout) rootView.findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("Tab 1"));
-        tabs.addTab(tabs.newTab().setText("Tab 2"));
-        tabs.addTab(tabs.newTab().setText("Tab 3"));
+        fragment1 = new VocabularyFragment();
+        fragment2 = new GrammarFragment();
+        fragment3 = new ConversationFragment();
+        fm = getChildFragmentManager();
+        active = fragment1;
+        BottomNavigationView navigation = (BottomNavigationView) rootView.findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //Link tabs with view pager
-        tabs.setupWithViewPager(mViewPager);
-        //getSupportActionBar().setTitle("Hello World");
-        //toolbar.setTitle("Hello World");
+        fm.beginTransaction().add(R.id.main_container, fragment3, "3").hide(fragment3).commit();
+        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
 
-//        //Adding menu icon to Toolbar
-//        ActionBar supportActionBar = getSupportActionBar();
-//        if (supportActionBar != null) {
-//            supportActionBar.setTitle("");
-//            //supportActionBar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
-//            supportActionBar.setDisplayHomeAsUpEnabled(true);
-//        }
-
-
-        // Inflate the layout for this fragment
         return rootView;
     }
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            if (position == 0)
-                return (new VocalFragmentTab());
-            else if (position == 1)
-                return (new GramFragmentTab());
-            else if (position == 2)
-                return (new ConverFragmentTab());
-            return null;
-        }
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_vocabulary:
+                    fm.beginTransaction().hide(active).show(fragment1).commit();
+                    active = fragment1;
+                    return true;
 
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
+                case R.id.navigation_grammar:
+                    fm.beginTransaction().hide(active).show(fragment2).commit();
+                    active = fragment2;
+                    return true;
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "Vocabulary";
-                case 1:
-                    return "Grammer";
-                case 2:
-                    return "Conversation";
+                case R.id.navigation_conversation:
+                    fm.beginTransaction().hide(active).show(fragment3).commit();
+                    active = fragment3;
+                    return true;
             }
-            return null;
+            return false;
         }
-
-    }
+    };
 
 }
