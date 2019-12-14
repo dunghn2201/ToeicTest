@@ -2,7 +2,6 @@ package com.dunghn.toeictest.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +13,20 @@ import com.dunghn.toeictest.VocabularyActivity;
 import com.dunghn.toeictest.R;
 import com.dunghn.toeictest.model.VocalLevels;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
-public class VocabAdapter extends RecyclerView.Adapter<VocabAdapter.MyViewHolder> {
+public class VocabLevelAdapter extends RecyclerView.Adapter<VocabLevelAdapter.MyViewHolder> {
 
-    ArrayList<VocalLevels> al;
+    List<VocalLevels> al;
     Context mcontext;
-    public VocabAdapter(ArrayList<VocalLevels> al, Context context) {
+    public VocabLevelAdapter(List<VocalLevels> al, Context context) {
         this.al = al;
         this.mcontext=context;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         View singlecardview;
-
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -48,10 +46,8 @@ public class VocabAdapter extends RecyclerView.Adapter<VocabAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-
         View localcardview = holder.singlecardview;
         TextView tv1;
-
         tv1 = (TextView) (localcardview.findViewById(R.id.vocableveltv));
         VocalLevels obj = al.get(position);
 

@@ -7,21 +7,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.dunghn.toeictest.R;
-import com.dunghn.toeictest.adapter.VocabAdapter;
+import com.dunghn.toeictest.adapter.VocabLevelAdapter;
 import com.dunghn.toeictest.model.VocalLevels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VocabularyFragment extends Fragment {
-    ArrayList<VocalLevels> vocalLevels = new ArrayList<>();
+    List<VocalLevels> vocalLevels = new ArrayList<>();
     RecyclerView rcv;
-    VocabAdapter adapterVocal;
+    VocabLevelAdapter adapterVocal;
     public VocabularyFragment() {
         // Required empty public constructor
     }
@@ -45,11 +45,11 @@ public class VocabularyFragment extends Fragment {
         vocalLevels.add(new VocalLevels("Level 8", "level8.txt"));
 
 
-        adapterVocal = new VocabAdapter(vocalLevels, getContext());
+        adapterVocal = new VocabLevelAdapter(vocalLevels, getContext());
         rcv.setAdapter(adapterVocal);
         adapterVocal.notifyDataSetChanged();
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(getContext().getApplicationContext(), 3);
-        rcv.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext().getApplicationContext(), 3);
+        rcv.setLayoutManager(gridLayoutManager);
         return rootView;
     }
 

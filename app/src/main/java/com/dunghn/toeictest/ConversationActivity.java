@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.dunghn.toeictest.adapter.ConversationAdapter;
@@ -24,15 +26,15 @@ import java.util.StringTokenizer;
 
 public class ConversationActivity extends AppCompatActivity {
     List<Conversation> listconversation;
-    List<String> allsentences;
+    List<String> allconversation;
     RecyclerView rv;
     String filename;
     boolean b = true;
     int count = 0;
-    ConversationAdapter myad;
+    ConversationAdapter Adapterconversation;
     TextToSpeech textToSpeech;
     Toolbar toolbar;
-
+Button btnShowchat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +60,12 @@ public class ConversationActivity extends AppCompatActivity {
 
         new Thread(new loadChat()).start();
         rv = findViewById(R.id.rcchat);
+        btnShowchat=findViewById(R.id.btnShowchat);
         listconversation = new ArrayList<>();
-        allsentences = new ArrayList<>();
-        myad = new ConversationAdapter(listconversation, this);
-        rv.setAdapter(myad);
-        myad.notifyDataSetChanged();
+        allconversation = new ArrayList<>();
+        Adapterconversation = new ConversationAdapter(listconversation, this);
+        rv.setAdapter(Adapterconversation);
+        Adapterconversation.notifyDataSetChanged();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(linearLayoutManager);
 
@@ -73,24 +76,32 @@ public class ConversationActivity extends AppCompatActivity {
                 finish();
             }
         });
+        btnShowchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Showchat();
+            }
+        });
     }
 
-    public void showchat(View view) {
-
-        if (!(count == allsentences.size() - 1)) {
+    private void Showchat() {
+        Log.d("PEP", String.valueOf(allconversation.size()));
+        if (!(count == allconversation.size() - 1)) {
             if (b == true) {
-                listconversation.add(new Conversation(allsentences.get(count), "left"));
+                listconversation.add(new Conversation(allconversation.get(count), "left"));
+                Log.d("PEP", String.valueOf(allconversation.get(count)));
                 b = false;
             } else {
-                listconversation.add(new Conversation(allsentences.get(count), "right"));
+                listconversation.add(new Conversation(allconversation.get(count), "right"));
                 b = true;
+                Log.d("PEP", String.valueOf(allconversation.get(count)));
             }
-            sayIt(allsentences.get(count));
+            sayIt(allconversation.get(count));
             count++;
 
-            myad.notifyDataSetChanged();
+            Adapterconversation.notifyDataSetChanged();
             rv.scrollToPosition(listconversation.size() - 1);
-
+            Log.d("PEO", String.valueOf(allconversation.size()-1));
         } else {
             Toast.makeText(getApplicationContext(), "Conversation Ended", Toast.LENGTH_SHORT).show();
         }
@@ -129,7 +140,8 @@ public class ConversationActivity extends AppCompatActivity {
                 String mLine;
                 listconversation.clear();
                 while ((mLine = reader.readLine()) != null) {
-                    allsentences.add(mLine);
+                    allconversation.add(mLine);
+                    Log.d("XEMTHOI", String.valueOf(mLine));
                 }
             } catch (IOException e) {
                 e.printStackTrace();

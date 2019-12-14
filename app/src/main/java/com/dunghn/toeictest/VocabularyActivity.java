@@ -2,6 +2,7 @@ package com.dunghn.toeictest;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,23 +11,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.dunghn.toeictest.adapter.VocalDetailAdapter;
+import com.dunghn.toeictest.adapter.VocalAdapter;
 import com.dunghn.toeictest.model.VocalDetail;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class VocabularyActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     RecyclerView leveldetailrcv;
-    ArrayList<VocalDetail> al;
-    VocalDetailAdapter myad;
+    List<VocalDetail> listVocalDetail;
+    VocalAdapter AdaptervocalDetail;
 
-    String filename;
+    String filename,levelname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,8 @@ public class VocabularyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_level_detail);
         try {
             filename = getIntent().getStringExtra("filename");
-            String levelname = getIntent().getStringExtra("levelname");
-            al = new ArrayList<>();
+            levelname = getIntent().getStringExtra("levelname");
+            listVocalDetail = new ArrayList<>();
             toolbar = (Toolbar) (findViewById(R.id.toolbar));
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
@@ -44,9 +46,8 @@ public class VocabularyActivity extends AppCompatActivity {
 
             leveldetailrcv = (RecyclerView) findViewById(R.id.leveldetailrcv);
             leveldetailrcv.setNestedScrollingEnabled(false);
-            myad = new VocalDetailAdapter(al, getApplicationContext());
-            leveldetailrcv.setAdapter(myad);
-
+            AdaptervocalDetail = new VocalAdapter(listVocalDetail, getApplicationContext());
+            leveldetailrcv.setAdapter(AdaptervocalDetail);
 
         } catch (Exception ae) {
             ae.printStackTrace();
@@ -65,16 +66,10 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
     class loadLevelContent implements Runnable {
 
         @Override
         public void run() {
-
             BufferedReader reader = null;
             try {
                 reader = new BufferedReader(
@@ -82,7 +77,7 @@ public class VocabularyActivity extends AppCompatActivity {
                 // đọc đến khi hết file
                 String mLine;
                 StringTokenizer st;
-                al.clear();
+                listVocalDetail.clear();
                 while ((mLine = reader.readLine()) != null) {
                     st = new StringTokenizer(mLine, ";");
                     String id = st.nextToken();
@@ -90,13 +85,11 @@ public class VocabularyActivity extends AppCompatActivity {
                     String answer = st.nextToken();
                     String additional = st.nextToken();
                     String photo = st.nextToken();
-                    al.add(new VocalDetail(id, title, answer, additional, photo));
-
+                    listVocalDetail.add(new VocalDetail(id, title, answer, additional, photo));
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            myad.notifyDataSetChanged();
-
+                            AdaptervocalDetail.notifyDataSetChanged();
                         }
                     });
                 }

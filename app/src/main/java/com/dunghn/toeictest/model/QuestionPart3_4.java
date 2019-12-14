@@ -34,7 +34,7 @@ public class QuestionPart3_4 extends Question {
     }
 
     public void setAnswerC(String answerC) {
-        this.answerC = answerC;
+        this.answerC  = answerC;
     }
 
     public String getAnswerD() {

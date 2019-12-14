@@ -2,7 +2,6 @@ package com.dunghn.toeictest.adapter;
 
 import android.graphics.Color;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,14 +58,14 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         TextView tv1;
         LinearLayout chatll, chatllin;
 
-        tv1 = (TextView) (localcardview.findViewById(R.id.chattv));
-        chatll = (localcardview.findViewById(R.id.chatll));
-        chatllin = (localcardview.findViewById(R.id.chatllin));
+        tv1 = localcardview.findViewById(R.id.chattv);
+        chatll = localcardview.findViewById(R.id.chatll);
+        chatllin = localcardview.findViewById(R.id.chatllin);
         chatllin.setLayoutParams(params);
 
         Conversation obj = mlistconversation.get(position);
 
-        tv1.setText(obj.getText());
+        tv1.setText(obj.getTextspeech());
 
 
         if (obj.getSide().equalsIgnoreCase("left")) {
@@ -84,7 +83,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         localcardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mConverActivity.sayIt(mlistconversation.get(position).getText());
+                mConverActivity.sayIt(mlistconversation.get(position).getTextspeech());
             }
         });
 
@@ -92,7 +91,6 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
 
     @Override
     public int getItemCount() {
-
         return mlistconversation.size();
     }
 }

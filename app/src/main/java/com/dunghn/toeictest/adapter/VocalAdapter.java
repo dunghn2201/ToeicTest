@@ -12,17 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dunghn.toeictest.R;
 import com.dunghn.toeictest.VocalDetailActivity;
 import com.dunghn.toeictest.model.VocalDetail;
+import java.util.List;
 
-import java.util.ArrayList;
 
+public class VocalAdapter extends RecyclerView.Adapter<VocalAdapter.MyViewHolder> {
 
-public class VocalDetailAdapter extends RecyclerView.Adapter<VocalDetailAdapter.MyViewHolder> {
-
-    ArrayList<VocalDetail> mlevelData;
+    List<VocalDetail> mlevelData;
     Context mcontext;
 
 
-    public VocalDetailAdapter(ArrayList<VocalDetail> levelData, Context context) {
+    public VocalAdapter(List<VocalDetail> levelData, Context context) {
         this.mlevelData = levelData;
         this.mcontext = context;
     }
@@ -45,14 +44,13 @@ public class VocalDetailAdapter extends RecyclerView.Adapter<VocalDetailAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-
         View localcardview = holder.itemView;
-        TextView tv1, tv2;
-        tv1 = (TextView) (localcardview.findViewById(R.id.vocaltitle));
-        tv2 = (TextView) (localcardview.findViewById(R.id.vocalImage));
+        TextView vocaltitle, vocaldecription;
+        vocaltitle = (TextView) (localcardview.findViewById(R.id.vocaltitle));
+        vocaldecription = (TextView) (localcardview.findViewById(R.id.vocaldecription));
         final VocalDetail obj = mlevelData.get(position);
-        tv1.setText(obj.title);
-        tv2.setText(obj.answer);
+        vocaltitle.setText(obj.title);
+        vocaldecription.setText(obj.answer);
 
         localcardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +61,7 @@ public class VocalDetailAdapter extends RecyclerView.Adapter<VocalDetailAdapter.
                 in.putExtra("answer", obj.answer);
                 in.putExtra("additional", obj.additional);
                 in.putExtra("photo", obj.photo);
-//                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(in);
             }
         });

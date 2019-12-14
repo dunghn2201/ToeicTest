@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.dunghn.toeictest.GrammarDetailActivity;
 import com.dunghn.toeictest.R;
@@ -53,7 +52,6 @@ public class GrammarFragment extends Fragment {
         llm.scrollToPosition(0);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-        rv.setItemAnimator(new DefaultItemAnimator());
         title = getActivity().getResources().getStringArray(R.array.grammar_lessons);
         meaning = getActivity().getResources().getStringArray(R.array.grammar_meaning);
         rvAdapter = new GrammarAdapter(images, title, meaning);

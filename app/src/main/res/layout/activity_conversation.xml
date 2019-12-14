@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/btncustomxaml"
-            android:onClick="showchat"
             android:padding="5dp"
+            android:id="@+id/btnShowchat"
             android:text="Click for Next Line"
             android:textColor="#ffffff" />
 
